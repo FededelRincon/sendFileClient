@@ -1,3 +1,10 @@
+.orderList{
+    /* background-color: #0070f3; */
+    /* font-size: 14px; */
+    /* margin-left: 10px; */
+    list-style-type: disc;
+}
+
 /* .container {
   min-height: 100vh;
   padding: 0 0.5rem;
