@@ -1,17 +1,18 @@
 // import styles from '../styles/Home.module.css'
-
-// export default function Home() {
-//     return (
-//         <div>
-//             <h1>Hola Mundo en Next.js</h1>
-//         </div>
-//     )
-// }
-
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Layout from '../components/Layout';
+import authContext from '../context/auth/authContext';
 
 const Index = () => {
+
+    // Extraer el usuario autenticado del storage
+    const AuthContext = useContext(authContext);
+    const { authenticatedUser } = AuthContext;
+
+    useEffect(() => {
+        authenticatedUser();
+    }, [])
+
     return (
         <>
             <Layout>

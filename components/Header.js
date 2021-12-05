@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Link from 'next/link';
+import authContext from '../context/auth/authContext';
 
 
 const Header = () => {
+
+    // Extraer el usuario autenticado del storage
+    const AuthContext = useContext(authContext);
+    const { authenticatedUser, user, logOut } = AuthContext;
+
+    
+    useEffect(() => {
+        authenticatedUser();
+    }, [])
+
+
     return (
         <>
             <header className="py-8 flex flex-col md:flex-row items-center justify-between">
@@ -12,13 +24,32 @@ const Header = () => {
                 </Link>
 
                 <div>
-                    <Link href="/login">
-                        <a className="bg-green-600 px-6 py-4 rounded-lg text-white uppercase mr-3 hover:bg-green-700">Iniciar sesion</a>
-                    </Link>
+                    {
+                        user ? ( 
+                            <>
+                                <div className="flex items-center">
+                                    <p className="mr-5">Hola {user.name}</p>
+                                    <button 
+                                        className="bg-green-600 px-6 py-4 rounded-lg text-white uppercase mr-3 hover:bg-green-700"
+                                        onClick={()=> logOut() }
+                                    >
+                                        Cerrar sesion
+                                    </button>
+                                </div>
+                            </>
+                        ):( 
+                            <>
+                                <Link href="/login">
+                                    <a className="bg-green-600 px-6 py-4 rounded-lg text-white uppercase mr-3 hover:bg-green-700">Iniciar sesion</a>
+                                </Link>
 
-                    <Link href="/account">
-                        <a className="bg-blue-400 px-6 py-4 rounded-lg text-white uppercase hover:bg-blue-500">Crear Cuenta</a>
-                    </Link>
+                                <Link href="/account">
+                                    <a className="bg-blue-500 px-6 py-4 rounded-lg text-white uppercase hover:bg-blue-600">Crear Cuenta</a>
+                                </Link>
+                            </>
+                        )
+                    }
+
                 </div>
 
             </header>

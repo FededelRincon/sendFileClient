@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
+
+import authContext from '../context/auth/authContext';
+
+import Alert from '../components/Alert';
 
 
-// CrearCuenta
+// CrearCuenta para delaTorre
 const Account = () => {
+
+    // AuthState
+    const AuthContext = useContext(authContext);
+    const { message, registerUser, authenticated } = AuthContext;
+
+    // Next router
+    const router = useRouter();
 
     // form con formik y yup
     const formik = useFormik({
@@ -24,7 +36,10 @@ const Account = () => {
                         .min(6, 'El Password debe contener al menos 6 caracteres')
         }),
         onSubmit: (valores) => {
-            console.log(valores)
+            registerUser(valores);
+            setTimeout(() => {
+                router.push('/');
+            }, 3000);
         }
     });
 
@@ -35,6 +50,10 @@ const Account = () => {
             <Layout>
                 <div className="md:w-4/5 xl:w-3/5 mx-auto mb-32">
                     <h2 className="text-4xl font-sans font-bold text-gray-800 text-center my-4">Crear Cuenta</h2>
+
+                    {
+                        message && <Alert />
+                    }
 
                     <div className="flex justify-center mt-5">
                         <div className="w-full max-w-lg">

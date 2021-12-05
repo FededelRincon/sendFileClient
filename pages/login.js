@@ -1,12 +1,30 @@
 // import styles from '../styles/Home.module.css'
-
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
+
+import authContext from '../context/auth/authContext';
+
+import Alert from '../components/Alert';
 
 
 const Login = () => {
+    //define context
+    const AuthContext = useContext(authContext);
+    const { message, logIn, authenticated } = AuthContext;
+
+    // Next router
+    const router = useRouter();
+
+
+    useEffect(() => {
+        if(authenticated){
+            router.push('/');
+        }
+    }, [authenticated])
+
     // form con formik y yup
     const formik = useFormik({
         initialValues: {
@@ -20,7 +38,7 @@ const Login = () => {
             password: Yup.string().required('El Password es obligatorio')
         }),
         onSubmit: (valores) => {
-            console.log(valores)
+            logIn(valores)
         }
     });
 
@@ -29,6 +47,10 @@ const Login = () => {
             <Layout>
                 <div className="md:w-4/5 xl:w-3/5 mx-auto mb-32">
                     <h2 className="text-4xl font-sans font-bold text-gray-800 text-center my-4">Iniciar Sesion</h2>
+
+                    {
+                        message && <Alert />
+                    }
 
                     <div className="flex justify-center mt-5">
                         <div className="w-full max-w-lg">
