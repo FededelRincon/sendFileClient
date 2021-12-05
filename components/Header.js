@@ -10,9 +10,9 @@ const Header = () => {
     const { authenticatedUser, user, logOut } = AuthContext;
 
     
-    useEffect(() => {
-        authenticatedUser();
-    }, [])
+    // useEffect(() => {
+    //     authenticatedUser();
+    // }, [])
 
 
     return (
