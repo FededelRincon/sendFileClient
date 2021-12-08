@@ -40,11 +40,11 @@ const Header = () => {
                         ):( 
                             <>
                                 <Link href="/login">
-                                    <a className="bg-green-600 px-6 py-4 rounded-lg text-white uppercase mr-3 hover:bg-green-700">Iniciar sesion</a>
+                                    <a className="bg-red-700 px-6 py-4 rounded-lg text-white uppercase mr-3 hover:bg-red-800">Iniciar sesion</a>
                                 </Link>
 
                                 <Link href="/account">
-                                    <a className="bg-blue-500 px-6 py-4 rounded-lg text-white uppercase hover:bg-blue-600">Crear Cuenta</a>
+                                    <a className="bg-black px-6 py-4 rounded-lg text-white uppercase hover:bg-gray-700">Crear Cuenta</a>
                                 </Link>
                             </>
                         )
