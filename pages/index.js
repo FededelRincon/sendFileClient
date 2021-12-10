@@ -38,7 +38,7 @@ const Index = () => {
                                 </p>
                                 <button
                                     type="button"
-                                    className="bg-green-600 hover:bg-green-700 w-full p-2 mt-8 text-white uppercase rounded-lg"
+                                    className="bg-red-700 hover:bg-red-800 w-full p-2 mt-8 text-white uppercase rounded-lg"
                                     onClick={() => navigator.clipboard.writeText( `${process.env.frontendURL}/links/${url}` )}
                                 >
                                     Copiar Enlace

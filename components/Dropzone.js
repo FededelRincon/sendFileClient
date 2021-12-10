@@ -10,7 +10,7 @@ const Dropzone = () => {
     const { uploading, showAlert, uploadFile, createLink} = AppContext;
 
     const onDropRejected = () => {
-        showAlert('no se pudo subir, el Limite para usuario no registrados es de 1MB, obten tu cuenta gratis para subir archivos sin limite de tamaño');
+        showAlert('No se pudo subir, el Limite para usuario no registrados es de 1MB, obten tu cuenta gratis para subir archivos sin limite de tamaño');
     }
 
     const onDropAccepted = useCallback( async ( acceptedFiles ) => { //el useCallback es para q NO renderize por cada byte que sube
@@ -80,7 +80,7 @@ const Dropzone = () => {
                                             <>
                                                 <div className="text-center">
                                                 <p className="text-2xl text-center text-gray-600">Selecciona un archivo y arrastralo aqui...</p>
-                                                <button className="bg-blue-700 w-full py-3 rounded-lg text-white my-10 hover:bg-blue-800" type="button">
+                                                <button className="bg-blue-800 w-full py-3 rounded-lg text-white my-10 hover:bg-blue-900" type="button">
                                                     Selecciona archivos para subir
                                                 </button>
                                                 </div>

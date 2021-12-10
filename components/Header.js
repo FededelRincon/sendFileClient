@@ -1,27 +1,44 @@
 import React, { useContext, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+
 import authContext from '../context/auth/authContext';
+import appContext from '../context/app/appContext';
 
 
 const Header = () => {
+
+    //Routing
+    const router = useRouter();
+
 
     // Extraer el usuario autenticado del storage
     const AuthContext = useContext(authContext);
     const { authenticatedUser, user, logOut } = AuthContext;
 
-    
-    // useEffect(() => {
-    //     authenticatedUser();
-    // }, [])
+    // context de la app
+    const AppContext = useContext(appContext);
+    const { cleanState } = AppContext;
 
+    
+    useEffect(() => {
+        authenticatedUser();
+    }, [])
+
+
+    const redirect = () => {
+        router.push('/')
+        cleanState();
+    }
 
     return (
         <>
             <header className="py-8 flex flex-col md:flex-row items-center justify-between">
-                <Link href="/">
-                    <img className="w-64 mb-8 md:mb-0" src="logo2.svg" />
-                {/* falta que aparezca la manito */}
-                </Link>
+                <img
+                    onClick={ () => redirect() }
+                    className="w-64 mb-8 md:mb-0 cursor-pointer" src="/logo2.svg" 
+                />
 
                 <div>
                     {

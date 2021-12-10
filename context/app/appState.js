@@ -9,7 +9,8 @@ import { SHOW_ALERT,
     UPLOAD_FILE_SUCCESSFUL,
     UPLOAD_FILE_ERROR,
     CREATE_LINK_SUCCESSFUL,
-    CREATE_LINK_ERROR } from '../../types';
+    CREATE_LINK_ERROR,
+    CLEAN_STATE } from '../../types';
 
 import clientAxios from '../../config/axios';
     
@@ -94,8 +95,20 @@ const appState = ({children}) => {
                 payload: result.data.msg
             })
         } catch (error) {
-            console.log(error);
+            dispatch({
+                type: CREATE_LINK_ERROR,
+                payload: error.response.data.msg
+            })
         }
+    }
+
+
+
+    //limpiar state
+    const cleanState = () => {
+        dispatch({
+            type: CLEAN_STATE
+        })
     }
 
     return (
@@ -115,6 +128,7 @@ const appState = ({children}) => {
                 showAlert,
                 uploadFile,
                 createLink,
+                cleanState
             }}
         >
             {children}
