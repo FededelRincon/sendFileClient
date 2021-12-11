@@ -22,7 +22,9 @@ const Index = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
+
         if (token) {
+            console.log('entre al if...')
             authenticatedUser();
         }
 
@@ -58,10 +60,10 @@ const Index = () => {
                                     <div className="md:flex-1 mb-3 mx-2 mt-16 lg:mt-0">
                                         <h2 className="text-4xl font-sans font-bold text-gray-800 my-4">Compartir archivos de forma sencilla y privada</h2>
                                         <p className="text-lg leading-loose">
-                                            <span className="text-red-500 font-bold">SendFiles</span> te permite compartir cualquier tipo de archivos con un cifrado extremo y tener la seguridad que va a ser eliminado despues de su descarga. Asique puedes tener la seguridad para compartir todo tipo de archivos privados y saber que no se van a poder filtrar por ningun motivo.
+                                            <span className="text-red-700 font-bold">SendFiles</span> te permite compartir cualquier tipo de archivos con un cifrado extremo y tener la seguridad que va a ser eliminado despues de su descarga. Asique puedes tener la seguridad para compartir todo tipo de archivos privados y saber que no se van a poder filtrar por ningun motivo.
                                         </p>
                                         <Link href="/account" >
-                                            <a className="text-red-500 font-bold text-lg hover:text-red-700">Crea tu cuenta para enviar archivos de un mayor tamaño</a>
+                                            <a className="text-red-700 font-bold text-lg hover:text-red-700">Crea tu cuenta para enviar archivos de un mayor tamaño</a>
                                         </Link>
                                     </div>
                                 </div>

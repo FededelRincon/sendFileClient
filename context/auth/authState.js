@@ -82,6 +82,12 @@ const AuthState = ({ children }) => {
     // authenticated user from JWT
     const authenticatedUser = async () => {
         const token = localStorage.getItem('token');
+
+        //la primera vez q carga o si demora el backend, tira error porque el token es null....
+        if(token == null){
+            return 
+        }
+
         if(token){
             tokenAuth(token);
         }
@@ -104,11 +110,11 @@ const AuthState = ({ children }) => {
                 })
             }
             //creo q falto esto
-            // setTimeout(() => {
-            //     dispatch({
-            //         type: CLEAN_ALERT
-            //     })
-            // }, 3000);  
+            setTimeout(() => {
+                dispatch({
+                    type: CLEAN_ALERT
+                })
+            }, 3000);  
 
     }
 

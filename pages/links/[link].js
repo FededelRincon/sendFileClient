@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { EyeOffIcon } from '@heroicons/react/solid';
+import { useRouter } from 'next/router';
+
 
 import appContext from '../../context/app/appContext';
 import clientAxios from "../../config/axios";
@@ -45,6 +47,12 @@ const Link = ({ link }) => {
     const [password, setPassword] = useState(''); //
     const [showPassword, setShowPassword] = useState(false); // show/hide password from form
 
+    const [fileLink, setFileLink] = useState(link.file);
+
+
+    // Next router
+    const router = useRouter();
+
     const checkPassword = async (e) => {
         e.preventDefault();
 
@@ -55,12 +63,12 @@ const Link = ({ link }) => {
 
         try {
             const result = await clientAxios.post(`/api/links/${link.link}`, data)
-            // console.log(result)
-            setHasPassword(result.data.password)
+            setHasPassword(result.data.password);
+
+            setFileLink(result.data.file);
             
         } catch (error) {
-            // console.log(error.response.data.msg);
-            showAlert(error.response.data.msg);
+            showAlert(error.result.data.msg);
         }
 
     }
@@ -123,9 +131,10 @@ const Link = ({ link }) => {
                             <h1 className="text-4xl text-center text-gray-700"> Descarga tu archivo:  </h1>
                             <div className="flex items-center justify-center mt-10">
                                 <a 
-                                    href={`${process.env.backendURL}/api/files/${link.file}`} 
+                                    href={`${process.env.backendURL}/api/files/${fileLink}`} 
                                     className="bg-red-800 hover:bg-red-900 text-center px-10 py-3 rounded uppercase text-white cursor-pointer"
                                     download
+                                    onClick={ () => router.push('/') }
                                 >
                                     Descargar Aqui
                                 </a>
