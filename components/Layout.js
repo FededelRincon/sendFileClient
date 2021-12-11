@@ -11,11 +11,10 @@ const Layout = ({children}) => {
                 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
             </Head>
 
-
             <div className="bg-gray-200 min-h-screen">
                 <div className="container mx-auto">
                     <Header />
-                    <main className="mt-20">
+                    <main className="mt-20 pb-5">
                         {children}
                     </main>
                 </div>
