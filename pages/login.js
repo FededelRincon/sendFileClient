@@ -113,7 +113,7 @@ const Login = () => {
 
                                 <input
                                     type="submit"
-                                    className="bg-green-600 hover:bg-green-700 w-full p-2 mt-2 text-white uppercase rounded-lg"
+                                    className="bg-red-800 hover:bg-red-900 w-full p-2 mt-2 text-white uppercase rounded-lg"
                                     value="Iniciar Sesion"
                                 />
 

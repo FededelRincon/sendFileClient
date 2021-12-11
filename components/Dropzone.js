@@ -1,13 +1,18 @@
 import React, { useCallback, useContext } from 'react';
 import { useDropzone } from 'react-dropzone';
-import clientAxios from '../config/axios';
 import appContext from '../context/app/appContext';
-
+import authContext from '../context/auth/authContext';
+import Form from '../components/Form'
 
 const Dropzone = () => {
 
+    //context app
     const AppContext = useContext(appContext);
     const { uploading, showAlert, uploadFile, createLink} = AppContext;
+
+    //context auth
+    const AuthContext = useContext(authContext);
+    const { user, authenticated} = AuthContext;
 
     const onDropRejected = () => {
         showAlert('No se pudo subir, el Limite para usuario no registrados es de 1MB, obten tu cuenta gratis para subir archivos sin limite de tamaño');
@@ -52,12 +57,18 @@ const Dropzone = () => {
                                 </ul>
 
                                 {
+                                    authenticated ? <Form /> : ''
+                                }
+
+
+
+                                {
                                     uploading ? (
                                         <p className="my-10 text-center text-gray-600">Subiendo Archivo... </p>
                                     ) : (
                                         <button
                                             type="button"
-                                            className="bg-blue-700 w-full py-3 rounded-lg text-white my-10 hover:bg-blue-800"
+                                            className="bg-red-800 w-full py-3 rounded-lg text-white my-10 hover:bg-red-900"
                                             // onClick={ createLink() }
                                             onClick={ () => createLink() }
                                         >
@@ -80,7 +91,7 @@ const Dropzone = () => {
                                             <>
                                                 <div className="text-center">
                                                 <p className="text-2xl text-center text-gray-600">Selecciona un archivo y arrastralo aqui...</p>
-                                                <button className="bg-blue-800 w-full py-3 rounded-lg text-white my-10 hover:bg-blue-900" type="button">
+                                                <button className="bg-red-800 w-full py-3 rounded-lg text-white my-10 hover:bg-red-900" type="button">
                                                     Selecciona archivos para subir
                                                 </button>
                                                 </div>

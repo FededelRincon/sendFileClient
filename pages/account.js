@@ -38,7 +38,7 @@ const Account = () => {
         onSubmit: (valores) => {
             registerUser(valores);
             setTimeout(() => {
-                router.push('/');
+                router.push('/login');
             }, 3000);
         }
     });
@@ -51,9 +51,7 @@ const Account = () => {
                 <div className="md:w-4/5 xl:w-3/5 mx-auto mb-32">
                     <h2 className="text-4xl font-sans font-bold text-gray-800 text-center my-4">Crear Cuenta</h2>
 
-                    {
-                        message && <Alert />
-                    }
+                    { message && <Alert succesful={ true } /> }
 
                     <div className="flex justify-center mt-5">
                         <div className="w-full max-w-lg">
@@ -144,7 +142,7 @@ const Account = () => {
 
                                 <input
                                     type="submit"
-                                    className="bg-green-600 hover:bg-green-700 w-full p-2 mt-2 text-white uppercase rounded-lg"
+                                    className="bg-black hover:bg-gray-900 w-full p-2 mt-2 text-white uppercase rounded-lg"
                                     value="Crear Cuenta"
                                 />
 

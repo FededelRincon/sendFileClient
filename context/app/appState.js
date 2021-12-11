@@ -10,7 +10,9 @@ import { SHOW_ALERT,
     UPLOAD_FILE_ERROR,
     CREATE_LINK_SUCCESSFUL,
     CREATE_LINK_ERROR,
-    CLEAN_STATE } from '../../types';
+    CLEAN_STATE,
+    ADD_PASSWORD,
+    ADD_DOWNLOADS } from '../../types';
 
 import clientAxios from '../../config/axios';
     
@@ -89,7 +91,7 @@ const appState = ({children}) => {
 
         try {
             const result = await clientAxios.post('/api/links', data);
-            console.log(result.data);
+            // console.log(result.data);
             dispatch({
                 type: CREATE_LINK_SUCCESSFUL,
                 payload: result.data.msg
@@ -103,13 +105,30 @@ const appState = ({children}) => {
     }
 
 
-
     //limpiar state
     const cleanState = () => {
         dispatch({
             type: CLEAN_STATE
         })
     }
+
+
+    //agregar password al archivo
+    const addPassword = (password) => {
+        dispatch({
+            type: ADD_PASSWORD,
+            payload: password
+        })
+    }
+
+    //agrega num descargas al archivo
+    const numberDownloads = ( number ) => {
+        dispatch({
+            type: ADD_DOWNLOADS,
+            payload: number
+        })
+    }
+
 
     return (
         <appContext.Provider
@@ -128,7 +147,9 @@ const appState = ({children}) => {
                 showAlert,
                 uploadFile,
                 createLink,
-                cleanState
+                cleanState,
+                addPassword,
+                numberDownloads
             }}
         >
             {children}

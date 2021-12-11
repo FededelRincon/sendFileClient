@@ -47,7 +47,7 @@ const Header = () => {
                                 <div className="flex items-center">
                                     <p className="mr-5">Hola {user.name}</p>
                                     <button 
-                                        className="bg-green-600 px-6 py-4 rounded-lg text-white uppercase mr-3 hover:bg-green-700"
+                                        className="bg-black px-6 py-4 rounded-lg text-white uppercase mr-3 hover:bg-gray-700"
                                         onClick={()=> logOut() }
                                     >
                                         Cerrar sesion
@@ -57,7 +57,7 @@ const Header = () => {
                         ):( 
                             <>
                                 <Link href="/login">
-                                    <a className="bg-red-700 px-6 py-4 rounded-lg text-white uppercase mr-3 hover:bg-red-800">Iniciar sesion</a>
+                                    <a className="bg-red-800 px-6 py-4 rounded-lg text-white uppercase mr-3 hover:bg-red-900">Iniciar sesion</a>
                                 </Link>
 
                                 <Link href="/account">
