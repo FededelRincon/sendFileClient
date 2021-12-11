@@ -28,7 +28,7 @@ const Index = () => {
             authenticatedUser();
         }
 
-        
+        /* eslint-disable */
     }, [])
 
     return (
@@ -72,7 +72,7 @@ const Index = () => {
                     }
                     
                 </div>
-                <footer class="text-center border-t-2 border-red-800 pt-2">
+                <footer className="text-center border-t-2 border-red-800 pt-2">
                     <div>
                         Sitio creado por FDR. Todos los derechos reservados &copy;
                     </div>

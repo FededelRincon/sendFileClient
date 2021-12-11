@@ -24,6 +24,7 @@ const Header = () => {
     
     useEffect(() => {
         authenticatedUser();
+        /* eslint-disable */
     }, [])
 
 
@@ -37,7 +38,7 @@ const Header = () => {
             <header className="py-8 flex flex-col md:flex-row items-center justify-between">
                 <img
                     onClick={ () => redirect() }
-                    className="w-64 mb-8 md:mb-0 cursor-pointer" src="/logo3.svg" 
+                    className="w-64 mb-8 md:mb-0 cursor-pointer" src="/logo3.svg" alt="logo.svg" 
                 />
 
                 <div>

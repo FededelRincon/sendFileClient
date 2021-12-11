@@ -23,6 +23,7 @@ const Login = () => {
         if(authenticated){
             router.push('/');
         }
+        /* eslint-disable */
     }, [authenticated])
 
     // form con formik y yup

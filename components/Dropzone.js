@@ -28,7 +28,7 @@ const Dropzone = () => {
 
         uploadFile( formData, fileName );
 
-        
+        /* eslint-disable */
     }, []);
 
     
